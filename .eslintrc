@@ -10,7 +10,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "mongo": true
+    "mongo": true,
+    "jest": true
   },
   "rules": {},
   "parser": "@typescript-eslint/parser",
