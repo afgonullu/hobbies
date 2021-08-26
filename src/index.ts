@@ -7,6 +7,9 @@ import middlewares from './utils/middlewares';
 import userRouter from './routes/userRouter';
 import hobbyRouter from './routes/hobbyRouter';
 
+import swaggerUI from 'swagger-ui-express';
+import docs from './docs';
+
 require('express-async-errors');
 require('./db/mongo');
 
@@ -24,11 +27,11 @@ app.get('/ping', (_req, res) => {
 
 app.use('/users', userRouter);
 app.use('/hobbies', hobbyRouter);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 app.use(middlewares.unknownEndpoint);
 app.use(middlewares.errorHandler);
 
 app.listen(config.PORT, () => {
-  console.log(config.PORT);
   console.log(`Server running on port ${config.PORT}`);
 });
